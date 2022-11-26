@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.MediaFoundation.DirectX;
 using System.Security.Cryptography.X509Certificates;
+using System.Runtime;
 
 namespace FinalProject.Managers
 {
@@ -27,11 +28,25 @@ namespace FinalProject.Managers
             Projectiles.Add(new(_texture, projData));
         }
 
-        public static void Update()
+        public static void Update(List<Zombie> hordeOfZombies)
         {
             foreach (var bullet in Projectiles)
             {
                 bullet.Update();
+
+                foreach (var zombie in hordeOfZombies)
+                {
+                    if (zombie.HP <= 0)
+                        continue;
+
+                    if ((bullet.Position - zombie.Position).Length() < 32)
+                    {
+                        zombie.InflictDamage(1);
+                        bullet.Remove();
+                        Shared.Score++;
+                        break;
+                    }
+                }
             }
 
             Projectiles.RemoveAll((bullet) => bullet.Lifespan <= 0);

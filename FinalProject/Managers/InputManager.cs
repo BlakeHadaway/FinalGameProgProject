@@ -17,10 +17,13 @@ namespace FinalProject.Managers
         public static Vector2 Direction => _direction;
         public static Vector2 MousePosition => Mouse.GetState().Position.ToVector2();
         public static bool MouseClicked { get; private set; }
+        public static bool MouseRightClicked { get; private set; }
+        public static bool MouseLeftDown { get; private set; }
 
         public static void Update()
         {
-            var keyboardState = Keyboard.GetState();
+            KeyboardState keyboardState = Keyboard.GetState();
+            var mouseState = Mouse.GetState();
 
             _direction = Vector2.Zero;
 
@@ -36,8 +39,11 @@ namespace FinalProject.Managers
             if (keyboardState.IsKeyDown(Keys.D)) 
                 _direction.X++;
 
-            MouseClicked = (Mouse.GetState().LeftButton == ButtonState.Pressed) 
-                && (_lastMouseState.LeftButton == ButtonState.Released);
+
+            MouseLeftDown = mouseState.LeftButton == ButtonState.Pressed;
+            MouseClicked = MouseLeftDown && (_lastMouseState.LeftButton == ButtonState.Released);
+            MouseRightClicked = mouseState.RightButton == ButtonState.Pressed
+                                && (_lastMouseState.RightButton == ButtonState.Released);
 
             _lastMouseState = Mouse.GetState();
         }

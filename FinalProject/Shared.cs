@@ -15,7 +15,9 @@ namespace FinalProject
         public static float TotalSeconds { get; set; }
         public static ContentManager Content { get; set; }
         public static SpriteBatch SpriteBatch { get; set; }
+        public static SpriteFont SpriteFont { get; set; }
         public static Point Boundaries { get; set; }
+        public static int Score { get; set; }
 
         public static void Update(GameTime gameTime)
         {

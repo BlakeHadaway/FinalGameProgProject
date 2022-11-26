@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SharpDX.Direct3D9;
 
 namespace FinalProject
 {
@@ -21,7 +22,7 @@ namespace FinalProject
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            Shared.Boundaries = new(1600, 900);
+            Shared.Boundaries = new Point(1600, 900);
             _graphics.PreferredBackBufferWidth = Shared.Boundaries.X;
             _graphics.PreferredBackBufferHeight = Shared.Boundaries.Y;
             _graphics.ApplyChanges();
@@ -38,6 +39,7 @@ namespace FinalProject
 
             // TODO: use this.Content to load your game content here
             Shared.SpriteBatch = _spriteBatch;
+            SpriteFont font = this.Content.Load<SpriteFont>("fonts/MyFont");
 
         }
 

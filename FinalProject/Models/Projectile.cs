@@ -22,6 +22,11 @@ namespace FinalProject.Models
             Lifespan = projData.Lifespan;
         }
 
+        public void Remove()
+        {
+            Lifespan = 0;
+        }
+
         public void Update()
         {
             Position += Direction * Speed * Shared.TotalSeconds;

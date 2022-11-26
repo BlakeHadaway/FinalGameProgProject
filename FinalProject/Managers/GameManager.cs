@@ -16,20 +16,25 @@ namespace FinalProject.Managers
         public GameManager()
         {
             ProjectileManager.Initial();
-            _player = new (Shared.Content.Load<Texture2D>("images/player"), new (200, 200));
+            _player = new (Shared.Content.Load<Texture2D>("images/player"), new (Shared.Boundaries.X / 2, Shared.Boundaries.Y / 2));
+            ZombieManager.Initial();
+            ZombieManager.AddZombieToBattleField();
         }
 
         public void Update()
         {
             InputManager.Update();
             _player.Update();
-            ProjectileManager.Update();
+            ZombieManager.Update(_player);
+            ProjectileManager.Update(ZombieManager.HordeOfZombies);
         }
 
         public void Draw()
         {
             ProjectileManager.Draw();
             _player.Draw();
+            ZombieManager.draw();
+            UIManager.Draw(_player);
         }
     }
 }
