@@ -24,6 +24,8 @@ namespace FinalProject.Managers
             Shared.SpriteBatch.DrawString(font, $"{player.Ammo}", Vector2.Zero, color);
 
             Shared.SpriteBatch.DrawString(font, $"Score: {Shared.Score}", new Vector2(0, 845), Color.Black);
+
+            Shared.SpriteBatch.DrawString(font, $"Lives left: {player.NumberOfLives}", new Vector2(1250, 0), Color.Black);
         }
     }
 }

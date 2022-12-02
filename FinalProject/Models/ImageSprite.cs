@@ -12,7 +12,7 @@ namespace FinalProject.Models
 {
     public class ImageSprite
     {
-        protected readonly Texture2D texture;
+        public Texture2D texture;
         protected readonly Vector2 origin;
         public Vector2 Position { get; set; }
         public int Speed { get; set; }

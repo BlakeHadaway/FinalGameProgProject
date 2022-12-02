@@ -3,14 +3,20 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.Direct3D9;
+using System.Windows.Forms.VisualStyles;
 
 namespace FinalProject
 {
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        public SpriteBatch _spriteBatch;
         private GameManager _gameManager;
+        public Texture2D _background;
+
+        private GameScene startScene;
+        private HelpScene helpScene;
+        private ActionScene actionScene;
 
         public Game1()
         {
@@ -33,6 +39,18 @@ namespace FinalProject
             base.Initialize();
         }
 
+        private void HideAllScenes()
+        {
+            foreach (GameComponent gameComponent in Components)
+            {
+                if (gameComponent is GameScene)
+                {
+                    GameScene scene = (GameScene)gameComponent;
+                    scene.hide();
+                }
+            }
+        }
+
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -40,6 +58,17 @@ namespace FinalProject
             // TODO: use this.Content to load your game content here
             Shared.SpriteBatch = _spriteBatch;
             SpriteFont font = this.Content.Load<SpriteFont>("fonts/MyFont");
+            _background = this.Content.Load<Texture2D>("backgrounds/GreenBackground");
+
+            startScene = new StartScene(this);
+            this.Components.Add(startScene);
+            startScene.show();
+            // other scenes will be instantiated here
+            helpScene = new HelpScene(this);
+            this.Components.Add(helpScene);
+
+            actionScene = new ActionScene(this);
+            this.Components.Add(actionScene);
 
         }
 
@@ -50,7 +79,32 @@ namespace FinalProject
 
             // TODO: Add your update logic here
             Shared.Update(gameTime);
-            _gameManager.Update();
+
+            int selectedIndex = 0;
+            KeyboardState ks = Keyboard.GetState();
+            if (startScene.Enabled)
+            { 
+                if (selectedIndex == 0 && ks.IsKeyDown(Keys.Enter))
+                {
+                    HideAllScenes();
+                    actionScene.show();
+                }
+                else if (selectedIndex == 1 && ks.IsKeyDown(Keys.Escape))
+                {
+                    HideAllScenes();
+                    helpScene.show();
+                }
+            }
+            if (helpScene.Enabled || actionScene.Enabled)
+            {
+                if (ks.IsKeyDown(Keys.Escape))
+                {
+                    HideAllScenes();
+                    startScene.show();
+                }
+            }
+
+            
 
             base.Update(gameTime);
         }
@@ -61,7 +115,7 @@ namespace FinalProject
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-            _gameManager.Draw();
+            
             _spriteBatch.End();
 
             base.Draw(gameTime);

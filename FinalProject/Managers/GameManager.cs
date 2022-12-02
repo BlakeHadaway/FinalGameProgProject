@@ -27,6 +27,7 @@ namespace FinalProject.Managers
             _player.Update();
             ZombieManager.Update(_player);
             ProjectileManager.Update(ZombieManager.HordeOfZombies);
+            CollisionManager.Update(_player, ZombieManager.HordeOfZombies);
         }
 
         public void Draw()

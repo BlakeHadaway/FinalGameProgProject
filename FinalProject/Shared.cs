@@ -19,6 +19,8 @@ namespace FinalProject
         public static Point Boundaries { get; set; }
         public static int Score { get; set; }
 
+        public static Vector2 stage; 
+
         public static void Update(GameTime gameTime)
         {
             TotalSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
