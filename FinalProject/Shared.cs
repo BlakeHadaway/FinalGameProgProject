@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FinalProject.Animations;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -18,6 +19,8 @@ namespace FinalProject
         public static SpriteFont SpriteFont { get; set; }
         public static Point Boundaries { get; set; }
         public static int Score { get; set; }
+        public static Vector2 KillZombiePos { get; set; }
+        public static bool zombHit { get; set; }
 
         public static Vector2 stage; 
 

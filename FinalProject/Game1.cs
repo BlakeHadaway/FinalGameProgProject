@@ -11,7 +11,6 @@ namespace FinalProject
     {
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
-        private GameManager _gameManager;
         public Texture2D _background;
 
         private GameScene startScene;
@@ -34,7 +33,6 @@ namespace FinalProject
             _graphics.ApplyChanges();
 
             Shared.Content = Content;
-            _gameManager = new GameManager();
 
             base.Initialize();
         }
@@ -54,6 +52,7 @@ namespace FinalProject
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
 
             // TODO: use this.Content to load your game content here
             Shared.SpriteBatch = _spriteBatch;
@@ -83,13 +82,15 @@ namespace FinalProject
             int selectedIndex = 0;
             KeyboardState ks = Keyboard.GetState();
             if (startScene.Enabled)
-            { 
+            {
+                System.Diagnostics.Debug.WriteLine(selectedIndex);
+
                 if (selectedIndex == 0 && ks.IsKeyDown(Keys.Enter))
                 {
                     HideAllScenes();
                     actionScene.show();
                 }
-                else if (selectedIndex == 1 && ks.IsKeyDown(Keys.Escape))
+                else if (selectedIndex == 1 && ks.IsKeyDown(Keys.Enter))
                 {
                     HideAllScenes();
                     helpScene.show();

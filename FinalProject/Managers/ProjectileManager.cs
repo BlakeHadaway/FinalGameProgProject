@@ -41,9 +41,11 @@ namespace FinalProject.Managers
 
                     if ((bullet.Position - zombie.Position).Length() < 32)
                     {
+                        Shared.Score++;
+                        Shared.KillZombiePos = zombie.Position - new Vector2(25, 25);
+                        Shared.zombHit = true;
                         zombie.InflictDamage(1);
                         bullet.Remove();
-                        Shared.Score++;
                         break;
                     }
                 }

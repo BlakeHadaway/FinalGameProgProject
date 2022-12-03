@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FinalProject.Animations;
 using FinalProject.Models;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -19,11 +20,12 @@ namespace FinalProject.Managers
         public static float _spawnTiming;
         private static Random _randomNumber;
         private static int _padding;
+        public BloodSplat _bloodSplat;
 
         public static void Initial()
         {
             _texture = Shared.Content.Load<Texture2D>("images/zombie");
-            _spawnCooldown = 0.35f;
+            _spawnCooldown = 0.70f;
             _spawnTiming = _spawnCooldown;
             _randomNumber = new Random();
             _padding = _texture.Width / 2;

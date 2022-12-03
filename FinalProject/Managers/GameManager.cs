@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FinalProject.Animations;
 using FinalProject.Models;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

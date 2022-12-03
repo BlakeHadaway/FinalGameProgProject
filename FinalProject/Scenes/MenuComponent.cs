@@ -61,7 +61,7 @@ namespace FinalProject
         public override void Update(GameTime gameTime)
         {
             KeyboardState ks = Keyboard.GetState();
-            if (ks.IsKeyDown(Keys.Down) && oldState.IsKeyUp(Keys.Down))
+            if (ks.IsKeyDown(Keys.S) && oldState.IsKeyUp(Keys.S))
             {
                 selectedIndex++;
                 if (selectedIndex == menuItems.Count)
@@ -69,7 +69,7 @@ namespace FinalProject
                     selectedIndex = 0;
                 }
             }
-            if (ks.IsKeyDown(Keys.Up) && oldState.IsKeyUp(Keys.Up))
+            if (ks.IsKeyDown(Keys.W) && oldState.IsKeyUp(Keys.W))
             {
                 selectedIndex--;
                 if (selectedIndex == -1)
