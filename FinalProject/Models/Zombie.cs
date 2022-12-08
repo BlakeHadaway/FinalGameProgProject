@@ -21,17 +21,20 @@ namespace FinalProject.Models
 
         public void InflictDamage(int damage)
         {
+            // reducing the zombies HP by the damage passed in
             HP -= damage;
         }
 
         public void Update(Player player)
         {
             // Using these to set rotation of mobs so they are always locked onto player,
-            // and spirtes turn with it
             var huntPlayer = player.Position - Position;
+
+            // rotates zombie to be facing player at all times
             Rotation = (float)Math.Atan2(huntPlayer.Y, huntPlayer.X);
 
-            if(huntPlayer.Length() > 4)
+
+            if (huntPlayer.Length() > 4)
             {
                 var direction = Vector2.Normalize(huntPlayer);
                 Position += direction * Speed * Shared.TotalSeconds;

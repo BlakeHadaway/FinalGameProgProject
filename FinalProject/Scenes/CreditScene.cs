@@ -7,14 +7,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace FinalProject
+namespace FinalProject.Scenes
 {
-    public class HelpScene : GameScene
+    public class CreditScene : GameScene
     {
         private Game1 g;
-        private Texture2D tex = Shared.Content.Load<Texture2D>("backgrounds/HelpScreen");
+        private Texture2D tex;
 
-        public HelpScene(Game game) : base(game)
+        public CreditScene(Game game) : base(game)
         {
             this.g = (Game1)game;
             Shared.SpriteBatch = g._spriteBatch;
@@ -33,6 +33,4 @@ namespace FinalProject
             base.Draw(gameTime);
         }
     }
-
-
 }

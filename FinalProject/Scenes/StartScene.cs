@@ -25,10 +25,9 @@ namespace FinalProject
             Game1 g = (Game1)game;
             this.spriteBatch = g._spriteBatch;
 
-            SpriteFont regularFont = game.Content.Load<SpriteFont>("fonts/Myfont");
-            //SpriteFont highlightFont = game.Content.Load<SpriteFont>("fonts/HighlightedMenuFont");
+            SpriteFont font = game.Content.Load<SpriteFont>("fonts/startFont");
 
-            Menu = new MenuComponent(game, spriteBatch, regularFont, regularFont, menuItems);
+            Menu = new MenuComponent(game, spriteBatch, font, font, menuItems);
 
             this.Components.Add(Menu);
         }

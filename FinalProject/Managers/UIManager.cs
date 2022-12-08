@@ -15,13 +15,13 @@ namespace FinalProject.Managers
 {
     public class UIManager
     {
-        private static SpriteFont font = Shared.Content.Load<SpriteFont>("fonts/MyFont");
+        private static SpriteFont font = Shared.Content.Load<SpriteFont>("fonts/actionFont");
 
         public static void Draw(Player player)
         {
-            Color color = player.Reloading ? Color.Red : Color.Black;
+            Color color = player.Weapon.Reloading ? Color.Red : Color.Black;
 
-            Shared.SpriteBatch.DrawString(font, $"{player.Ammo}", Vector2.Zero, color);
+            Shared.SpriteBatch.DrawString(font, $"{player.Weapon.Ammo} / {player.Weapon.maxAmmo}", Vector2.Zero, color);
 
             Shared.SpriteBatch.DrawString(font, $"Score: {Shared.Score}", new Vector2(0, 845), Color.Black);
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FinalProject.Managers;
+using FinalProject.Models.Weapons;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,30 +16,44 @@ namespace FinalProject.Models
 {
     public class Player : ImageSprite
     {
-        private readonly float _shotsCooldown;
-        private float _reloadCooldownLeft;
+        public Weapon Weapon { get; set; } = new HandGun();
+        private readonly Weapon _pistol = new HandGun();
+        private readonly Weapon _smg = new MachineGun();
+        private readonly Weapon _sniper = new SniperRifle();
+
         private float _invincibilityCooldownLeft;
-        private readonly int _maximumAmmo;
         public int NumberOfLives { get; set; }
         public bool Invincibility { get; set; }
         public float _invincibilityTime;
-        public int Ammo { get; private set; }
-
-        private readonly float _reloadTime;
-        public bool Reloading { get; private set; }
 
         public Player(Texture2D tex, Vector2 pos) : base(tex, pos)
         {
-            _shotsCooldown = 0.25f;
-            _reloadCooldownLeft = 0f;
             _invincibilityCooldownLeft = 0f;
-            _maximumAmmo = 45;
-            Ammo = _maximumAmmo;
-            _reloadTime = 2.25f;
-            Reloading = false;
             NumberOfLives = 10;
             Invincibility = false;
             _invincibilityTime = 3.5f;
+            Weapon = _pistol;
+        }
+
+        private void SwapWeapon()
+        {
+            //Weapon = (Weapon == _pistol) ? _sniper : _smg;
+
+            if (Weapon == _pistol)
+            {
+                Weapon = _smg;
+            }
+            else if (Weapon == _smg)
+            {
+                Weapon = _sniper;
+                Shared.isSniperEquipped = true;
+            }
+            else
+            {
+                Shared.isSniperEquipped = false;
+                Weapon = _pistol;
+            }
+
         }
 
         public void IFrames()
@@ -50,53 +65,8 @@ namespace FinalProject.Models
             Invincibility = true;
         }
 
-        private void Reload()
-        {
-            if (Reloading)
-                return;
-
-            _reloadCooldownLeft = _reloadTime;
-            Reloading = true;
-            Ammo = _maximumAmmo;
-        }
-
-        private void Fire()
-        {
-            if (_reloadCooldownLeft > 0 || Reloading)
-                return;
-
-            Ammo--;
-            if (Ammo > 0)
-            {
-                _reloadCooldownLeft = _shotsCooldown;
-            }
-            else
-            {
-                Reload();
-            }
-
-            ProjectileData projectile = new ProjectileData()
-            {
-                Position = Position,
-                Rotation = Rotation,
-                Lifespan = 2,
-                Speed = 600,
-            };
-
-            ProjectileManager.AddProjectile(projectile);
-        }
-
         public void Update()
         {
-            if (_reloadCooldownLeft > 0)
-            {
-                _reloadCooldownLeft -= Shared.TotalSeconds;
-            }
-            else
-            {
-                Reloading = false;
-            }
-
             if (_invincibilityCooldownLeft > 0)
             {
                 _invincibilityCooldownLeft -= Shared.TotalSeconds;
@@ -120,14 +90,21 @@ namespace FinalProject.Models
             var toMouse = InputManager.MousePosition - Position;
             Rotation = (float)Math.Atan2(toMouse.Y, toMouse.X);
 
+            Weapon.Update();
+
             if (InputManager.MouseLeftDown)
             {
-                Fire();
+                Weapon.Fire(this);
             }
 
             if (InputManager.MouseRightClicked)
             {
-                Reload();
+                Weapon.Reload();
+            }
+
+            if (InputManager.SpacePressed)
+            {
+                SwapWeapon();
             }
         }
 

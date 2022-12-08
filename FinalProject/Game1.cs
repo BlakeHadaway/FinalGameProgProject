@@ -1,4 +1,5 @@
 ﻿using FinalProject.Managers;
+using FinalProject.Scenes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -11,11 +12,16 @@ namespace FinalProject
     {
         private GraphicsDeviceManager _graphics;
         public SpriteBatch _spriteBatch;
-        public Texture2D _background;
+        public Texture2D _actionBackground;
+        public Texture2D _startBackground;
 
         private GameScene startScene;
         private HelpScene helpScene;
         private ActionScene actionScene;
+        private ScoreScene scoreScene;
+        private CreditScene creditScene;
+
+        private static Texture2D mouseCrosshair = Shared.Content.Load<Texture2D>("images/Crosshair");
 
         public Game1()
         {
@@ -53,29 +59,34 @@ namespace FinalProject
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             
-
             // TODO: use this.Content to load your game content here
             Shared.SpriteBatch = _spriteBatch;
-            SpriteFont font = this.Content.Load<SpriteFont>("fonts/MyFont");
-            _background = this.Content.Load<Texture2D>("backgrounds/GreenBackground");
+            Shared.SpriteFont = this.Content.Load<SpriteFont>("fonts/MyFont");
+            _actionBackground = this.Content.Load<Texture2D>("backgrounds/GreenBackground");
+            _startBackground = this.Content.Load<Texture2D>("backgrounds/StartScreen");
 
             startScene = new StartScene(this);
             this.Components.Add(startScene);
             startScene.show();
-            // other scenes will be instantiated here
+
             helpScene = new HelpScene(this);
             this.Components.Add(helpScene);
 
             actionScene = new ActionScene(this);
             this.Components.Add(actionScene);
 
+            scoreScene = new ScoreScene(this);
+            this.Components.Add(scoreScene);
+
+            creditScene = new CreditScene(this);
+            this.Components.Add(creditScene);
+
+            Mouse.SetCursor(MouseCursor.FromTexture2D(mouseCrosshair, 24, 24));
+
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
             // TODO: Add your update logic here
             Shared.Update(gameTime);
 
@@ -83,7 +94,7 @@ namespace FinalProject
             KeyboardState ks = Keyboard.GetState();
             if (startScene.Enabled)
             {
-                System.Diagnostics.Debug.WriteLine(selectedIndex);
+                selectedIndex = MenuComponent.selectedIndex;
 
                 if (selectedIndex == 0 && ks.IsKeyDown(Keys.Enter))
                 {
@@ -95,8 +106,22 @@ namespace FinalProject
                     HideAllScenes();
                     helpScene.show();
                 }
+                else if (selectedIndex == 2 && ks.IsKeyDown(Keys.Enter))
+                {
+                    HideAllScenes();
+                    scoreScene.show();
+                }
+                else if(selectedIndex == 3 && ks.IsKeyDown(Keys.Enter))
+                {
+                    HideAllScenes();
+                    creditScene.show();
+                }
+                else if (selectedIndex == 4 && ks.IsKeyDown(Keys.Enter))
+                {
+                    this.Exit();
+                }
             }
-            if (helpScene.Enabled || actionScene.Enabled)
+            if (helpScene.Enabled || actionScene.Enabled || scoreScene.Enabled)
             {
                 if (ks.IsKeyDown(Keys.Escape))
                 {
@@ -105,7 +130,7 @@ namespace FinalProject
                 }
             }
 
-            
+
 
             base.Update(gameTime);
         }
@@ -115,9 +140,9 @@ namespace FinalProject
             GraphicsDevice.Clear(Color.DarkGray);
 
             // TODO: Add your drawing code here
-            _spriteBatch.Begin();
-            
-            _spriteBatch.End();
+            Shared.SpriteBatch.Begin();
+            Shared.SpriteBatch.Draw(_startBackground, Vector2.Zero, Color.White);
+            Shared.SpriteBatch.End();
 
             base.Draw(gameTime);
         }

@@ -18,9 +18,11 @@ namespace FinalProject
         public static SpriteBatch SpriteBatch { get; set; }
         public static SpriteFont SpriteFont { get; set; }
         public static Point Boundaries { get; set; }
+        public static int TotalScore { get; set; }
         public static int Score { get; set; }
         public static Vector2 KillZombiePos { get; set; }
         public static bool zombHit { get; set; }
+        public static bool isSniperEquipped { get; set; } = false;
 
         public static Vector2 stage; 
 

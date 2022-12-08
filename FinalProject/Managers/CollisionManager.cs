@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,17 +34,23 @@ namespace FinalProject.Managers
                 {
                     if (playerRect.Intersects(zombieRect))
                     {
-                        Shared.Score = 0;
                         player.NumberOfLives--;
                         player.IFrames();
+                        GameOver(player);
                     }
                 }
             }
         }
 
-        public void GameOver(Player player)
+        public static void GameOver(Player player)
         {
+            if (player.NumberOfLives == 0)
+            {
+                // define game over logic
 
+                // also need to be able to write to a local text file
+                FileIOManager.WriteScoreToFile();
+            }
         }
     }
 }

@@ -18,7 +18,7 @@ namespace FinalProject
 
         private List<string> menuItems;
 
-        public int selectedIndex { get; set; }
+        public static int selectedIndex { get; set; }
         public Vector2 position;
 
         private KeyboardState oldState;
@@ -29,7 +29,7 @@ namespace FinalProject
             this.regularFont = regularFont;
             this.highlightFont = highlightFont;
             menuItems =  menus.ToList<string>();
-            position = new Vector2(Shared.stage.X / 2, Shared.stage.Y / 2);
+            position = new Vector2(30, 30);
         }
 
         public override void Draw(GameTime gameTime)

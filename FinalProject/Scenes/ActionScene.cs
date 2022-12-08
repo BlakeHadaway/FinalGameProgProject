@@ -18,6 +18,7 @@ namespace FinalProject
         private GameManager _gameManager = new GameManager();
         private Game1 g;
         private Texture2D tex = Shared.Content.Load<Texture2D>("images/BloodSplatter");
+        private Texture2D background = Shared.Content.Load<Texture2D>("backgrounds/GreenBackground");
 
         public ActionScene(Game game) : base(game)
         {
@@ -39,7 +40,7 @@ namespace FinalProject
         public override void Draw(GameTime gameTime)
         {
             g._spriteBatch.Begin();
-            g._spriteBatch.Draw(g._background, Vector2.Zero, Color.White);
+            g._spriteBatch.Draw(background, Vector2.Zero, Color.White);
             _gameManager.Draw();
             g._spriteBatch.End();
             
