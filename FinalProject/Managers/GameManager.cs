@@ -64,6 +64,7 @@ namespace FinalProject.Managers
             // Clearing all the zombies and projectiles
             ZombieManager.HordeOfZombies.Clear();
             ProjectileManager.Projectiles.Clear();
+            ProjectileManager.Projectiles2.Clear();
 
             // setting the score and the scrolling index
             Shared.Score = 0;
@@ -76,6 +77,9 @@ namespace FinalProject.Managers
             Player.SMGUnlocked = false;
             Player.SniperUnlocked = false;
             Player.LMGUnlocked = false;
+
+            // setting this to false to prevent new game bug
+            Shared.isSniperEquipped = false;
 
             // setting the player lives, and changing the dead bool back to false
             _player.NumberOfLives = 5;
