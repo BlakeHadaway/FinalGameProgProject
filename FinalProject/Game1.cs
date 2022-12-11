@@ -57,6 +57,7 @@ namespace FinalProject
             _graphics.PreferredBackBufferHeight = Shared.Boundaries.Y;
             _graphics.ApplyChanges();
 
+            // using this to create the file if it isn't already created
             using (StreamWriter writer = File.AppendText("HighScores.txt"))
             {
                 writer.Close();

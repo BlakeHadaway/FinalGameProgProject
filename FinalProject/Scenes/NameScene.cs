@@ -31,7 +31,7 @@ namespace FinalProject.Scenes
         public NameScene(Game game) : base(game)
         {
             // setting the font
-            _font = Shared.Content.Load<SpriteFont>("fonts/startFont");
+            _font = Shared.Content.Load<SpriteFont>("fonts/nameFont");
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace FinalProject.Scenes
             Shared.SpriteBatch.Begin();
 
             // drawing the string for the user to enter there name
-            Shared.SpriteBatch.DrawString(_font, $"Your Name: {Shared.playerName}", Vector2.Zero, Shared.White);
+            Shared.SpriteBatch.DrawString(_font, $"Your Name: {Shared.playerName}", new Vector2(300, 400), Color.Red);
             Shared.SpriteBatch.End();
 
             base.Draw(gameTime);

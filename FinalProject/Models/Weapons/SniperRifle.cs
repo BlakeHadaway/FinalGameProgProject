@@ -22,10 +22,10 @@ namespace FinalProject.Models.Weapons
         /// </summary>
         public SniperRifle()
         {
-            cooldown = 2.1f;
+            cooldown = 0.5f;
             maxAmmo = 5;
             Ammo = maxAmmo;
-            reloadTime = 3.5f;
+            reloadTime = 2.7f;
             GunShot = sniperRifleShot;
             ReloadSound = sniperRifleReload;
             ReloadSound2 = sniperRifleReload2;

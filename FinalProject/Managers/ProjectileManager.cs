@@ -87,23 +87,20 @@ namespace FinalProject.Managers
                         // play zombie death sound 
                         zombieDeathSound.Play(volume: 0.2f, pitch: 0.0f, pan: 0.0f);
 
-                        // Score checkpoints for unlocking weapons and making the zombies spawn 
-                        // more frequently 
+                        // Score checkpoints for unlocking weapons
 
-                        if (Shared.Score == 15)
+                        if (Shared.Score == 30)
                         {
-                            Shared.zombieSpawnRate = 0.60f;
                             Player.SMGUnlocked = true;
                         }
 
-                        if (Shared.Score == 50)
+                        if (Shared.Score == 100)
                         {
-                            Shared.zombieSpawnRate = 0.45f;
                             Player.SniperUnlocked = true;
                         }
-                        if (Shared.Score == 125)
+
+                        if (Shared.Score == 250)
                         {
-                            Shared.zombieSpawnRate = 0.30f;
                             Player.LMGUnlocked = true;
                         }
 
@@ -130,20 +127,18 @@ namespace FinalProject.Managers
                         Shared.zombHit = true;
                         zombieDeathSound.Play(volume: 0.2f, pitch: 0.0f, pan: 0.0f);
 
-                        if (Shared.Score == 15)
+                        if (Shared.Score == 30)
                         {
-                            Shared.zombieSpawnRate = 0.60f;
                             Player.SMGUnlocked = true;
                         }
 
-                        if (Shared.Score == 50)
+                        if (Shared.Score == 100)
                         {
-                            Shared.zombieSpawnRate = 0.45f;
                             Player.SniperUnlocked = true;
                         }
-                        if (Shared.Score == 125)
+
+                        if (Shared.Score == 250)
                         {
-                            Shared.zombieSpawnRate = 0.30f;
                             Player.LMGUnlocked = true;
                         }
 

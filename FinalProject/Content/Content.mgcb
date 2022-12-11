@@ -80,6 +80,13 @@
 /processorParam:TextureFormat=Compressed
 /build:fonts/actionFont.spritefont
 
+#begin fonts/nameFont.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:fonts/nameFont.spritefont
+
 #begin fonts/scoreFont.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor

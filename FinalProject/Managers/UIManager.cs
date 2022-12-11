@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using FinalProject.Models;
+using FinalProject.Models.Weapons;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -32,21 +33,117 @@ namespace FinalProject.Managers
         {
             if (!Player.SMGUnlocked)
             {
-                tempString = $"Unlock the Smg at 15 points";
+                tempString = $"Unlock the Smg at 30 points";
                 stringDimentions = font.MeasureString(tempString);
                 Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - 900), Color.Black);
             }
             else if (!Player.SniperUnlocked)
             {
-                tempString = $"Unlock the Sniper at 50 points";
+                tempString = $"Unlock the Sniper at 100 points";
                 stringDimentions = font.MeasureString(tempString);
                 Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - 900), Color.Black);
             }
             else if (!Player.LMGUnlocked)
             {
-                tempString = $"Unlock the Lmg at 125 points";
+                tempString = $"Unlock the Lmg at 250 points";
                 stringDimentions = font.MeasureString(tempString);
                 Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - 900), Color.Black);
+            }
+            else if (Shared.Score >= 280)
+            {
+                tempString = $"Last Weapon Aquired : Survive As Long As Possible!";
+                stringDimentions = font.MeasureString(tempString);
+                Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - 900), Color.Black);
+            }
+
+            
+        }
+
+        /// <summary>
+        /// This method is to alert the player when a new gun is unlocked
+        /// </summary>
+        public static void AlertGunUnlock()
+        {
+            if (Shared.Score >= 30 && Shared.Score <= 60)
+            {
+                if (Shared.Score%2 == 0)
+                {
+                    tempString = $"New Unlock: Smg!";
+                    stringDimentions = font.MeasureString(tempString);
+                    Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - stringDimentions.Y), Color.Blue);
+                }
+                else
+                {
+                    tempString = $"New Unlock: Smg!";
+                    stringDimentions = font.MeasureString(tempString);
+                    Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - stringDimentions.Y), Color.Orange);
+                }
+            }
+            else if (Shared.Score >= 100 && Shared.Score <= 130)
+            {
+                if (Shared.Score % 2 == 0)
+                {
+                    tempString = $"New Unlock: Sniper!";
+                    stringDimentions = font.MeasureString(tempString);
+                    Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - stringDimentions.Y), Color.Blue);
+                }
+                else
+                {
+                    tempString = $"New Unlock: Sniper!";
+                    stringDimentions = font.MeasureString(tempString);
+                    Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - stringDimentions.Y), Color.Orange);
+                }
+            }
+            else if (Shared.Score >= 250 && Shared.Score <= 280)
+            {
+                if (Shared.Score % 2 == 0)
+                {
+                    tempString = $"New Unlock: Lmg!";
+                    stringDimentions = font.MeasureString(tempString);
+                    Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - stringDimentions.Y), Color.Blue);
+                }
+                else
+                {
+                    tempString = $"New Unlock: Lmg!";
+                    stringDimentions = font.MeasureString(tempString);
+                    Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - stringDimentions.Y), Color.Orange);
+                }
+            }
+        }
+
+        /// <summary>
+        /// this method changes the spawn rate of the zombies, and displays that
+        /// more zombies are incoming
+        /// </summary>
+        public static void ZombieSpawnRateChange()
+        {
+            if (Shared.Score >= 50 && Shared.Score <= 60)
+            {
+                tempString = $"More Zombies Incoming!";
+                stringDimentions = font.MeasureString(tempString);
+                Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - 50 - stringDimentions.Y), Color.Red);
+                Shared.zombieSpawnRate = 0.60f;
+            }
+            else if (Shared.Score >= 110 && Shared.Score <= 120)
+            {
+                tempString = $"Even More Zombies Incoming!";
+                stringDimentions = font.MeasureString(tempString);
+                Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - 50 - stringDimentions.Y), Color.Red);
+                Shared.zombieSpawnRate = 0.45f;
+            }
+            else if (Shared.Score >= 180 && Shared.Score <= 195)
+            {
+                tempString = $"A Huge Horde of Zombies Incoming!";
+                stringDimentions = font.MeasureString(tempString);
+                Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - 50 - stringDimentions.Y), Color.Red);
+                Shared.zombieSpawnRate = 0.30f;
+            }
+            else if (Shared.Score >= 320 && Shared.Score <= 350)
+            {
+                tempString = $"The Final Wave of Zombies Incoming! Survive!";
+                stringDimentions = font.MeasureString(tempString);
+                Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - 50 - stringDimentions.Y), Color.Red);
+                Shared.zombieSpawnRate = 0.20f;
             }
         }
 
@@ -127,6 +224,10 @@ namespace FinalProject.Managers
             DrawUIElements(player);
 
             PointUnlockCheck();
+
+            AlertGunUnlock();
+
+            ZombieSpawnRateChange();
 
             WeaponEquiped();
 
