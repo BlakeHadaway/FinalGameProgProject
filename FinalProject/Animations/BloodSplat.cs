@@ -12,8 +12,13 @@ using System.Windows.Forms;
 
 namespace FinalProject.Animations
 {
+    /// <summary>
+    /// This is the animation class for when a zombie dies
+    /// inherits from DrawableGameCompoent
+    /// </summary>
     public class BloodSplat : DrawableGameComponent
     {
+        // defining a bunch of variables to be used in the animation
         private Texture2D tex;
         private Vector2 dimention;
         private Vector2 position;
@@ -22,11 +27,22 @@ namespace FinalProject.Animations
         private int delay;
         private int delayCounter;
 
+        // defining const vars for the number of rows and cols for spritesheet
         private const int ROWS = 4;
         private const int COLUMNS = 4;
+
+        /// <summary>
+        /// constuctor for the BloodSplat animation
+        /// </summary>
+        /// <param name="game">passing in a game inst</param>
+        /// <param name="spriteBatch">a sprite batch</param>
+        /// <param name="tex">a texture</param>
+        /// <param name="position">a position</param>
+        /// <param name="delay">a delay for the animation</param>
         public BloodSplat(Game game, SpriteBatch spriteBatch, Texture2D tex,
             Vector2 position, int delay) : base(game)
         {
+            // setting properties
             this.position = position;
             this.delay = delay;
             this.tex = tex;
@@ -39,49 +55,89 @@ namespace FinalProject.Animations
 
         }
 
+        /// <summary>
+        /// this method creates the frames for the animation to go through
+        /// </summary>
         private void createFrames()
         {
+            // creating a list of frames, type rectangle
             frames = new List<Rectangle>();
+            // having a for loop to loop for all the rows
             for (int i = 0; i < ROWS; i++)
             {
+                // having a for loop to loop for all the cols
                 for (int j = 0; j < COLUMNS; j++)
                 {
+                    // setting the dimetion to get the right area for each frame
                     int x = j * (int)dimention.X;
+
+                    // setting the dimetion to get the right area for each frame
                     int y = i * (int)dimention.Y;
+
+                    // creating a new rectangle variable to set for each animation frame
                     Rectangle r = new Rectangle(x, y, (int)dimention.X, (int)dimention.Y);
+
+                    // adding it to the list of rectangle frames
                     frames.Add(r);
                 }
             }
         }
 
+        /// <summary>
+        /// method to show the animation
+        /// </summary>
         private void Show()
         {
             this.Enabled = true;
             this.Visible = true;
         }
 
+        
+        /// <summary>
+        /// method to hide animation frames
+        /// </summary>
         public void Hide()
         {
             this.Enabled = false;
             this.Visible = false;
         }
 
+        /// <summary>
+        /// this is to restart the animation
+        /// </summary>
         public void restart()
         {
+            // setting frame index back to -1
             frameIndex = -1;
+
+            // reseting delay counter
             delayCounter = 0;
             Show();
         }
 
+        /// <summary>
+        /// override update fuction
+        /// </summary>
+        /// <param name="gameTime">taking a gametime object</param>
         public override void Update(GameTime gameTime)
         {
+            // adding to the delay counter
             delayCounter++;
+
+            // checking to see if the delay counter is more then the delay,
+            // this is to know how long to display each frame for
             if (delayCounter > delay)
             { 
+                // adding to frame index
                 frameIndex++;
+
+                // checking to see if the frameindex is still withing the bounds of the rows * cols - 1
                 if (frameIndex > ROWS * COLUMNS - 1)
                 {
+                    // hide the animation
                     Hide();
+
+                    // reset the frameindex back to -1
                     frameIndex = -1;
                 }
                 delayCounter = 0;
@@ -91,12 +147,19 @@ namespace FinalProject.Animations
             
         }
 
+        /// <summary>
+        /// override for draw
+        /// </summary>
+        /// <param name="gameTime">passing in a gametime object </param>
         public override void Draw(GameTime gameTime)
         {
+            // drawing using shared spritebatch
             Shared.SpriteBatch.Begin();
+
+            // if the frame index is greater than or = to 0
             if (frameIndex >= 0)
             {
-                //v4
+                // draw the frames of the animation
                 Shared.SpriteBatch.Draw(tex, position, frames[frameIndex], Color.White);
             }
             Shared.SpriteBatch.End();

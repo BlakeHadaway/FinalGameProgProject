@@ -14,12 +14,20 @@ using Color = Microsoft.Xna.Framework.Color;
 
 namespace FinalProject.Managers
 {
+    /// <summary>
+    /// This is the UI class, this will generate and draw the UI elements for the user to see
+    /// </summary>
     public class UIManager
     {
+        // declare varibles to be used
         private static SpriteFont font = Shared.Content.Load<SpriteFont>("fonts/actionFont");
         private static string tempString;
         private static Vector2 stringDimentions;
 
+        /// <summary>
+        /// This method is to check the point unlock and display to the user what
+        /// there next gun unlock is and how many points they need
+        /// </summary>
         public static void PointUnlockCheck()
         {
             if (!Player.SMGUnlocked)
@@ -42,6 +50,11 @@ namespace FinalProject.Managers
             }
         }
 
+        /// <summary>
+        /// This method is for if the player dies, to show the user their end score and 
+        /// if they would like to restart the game
+        /// </summary>
+        /// <param name="player">passing in a player object</param>
         public static void Death(Player player)
         {
             if (player._dead)
@@ -52,8 +65,13 @@ namespace FinalProject.Managers
             }
         }
 
+        /// <summary>
+        /// This method draws all the UI elements
+        /// </summary>
+        /// <param name="player">Pass in the player object</param>
         public static void DrawUIElements(Player player)
         {
+            // setting the color of the ammo count based on if the player is reloading or not
             Color color = player.Weapon.Reloading ? Color.Red : Color.Black;
 
             tempString = $"{player.Weapon.Ammo} / {player.Weapon.maxAmmo}";
@@ -68,6 +86,9 @@ namespace FinalProject.Managers
             Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X - stringDimentions.X, 0), Color.Black);
         }
 
+        /// <summary>
+        /// This method is to display what weapon the player has currently equiped
+        /// </summary>
         public static void WeaponEquiped()
         {
             if (Shared.scrollIndex == 0)
@@ -96,8 +117,13 @@ namespace FinalProject.Managers
             }
         }
 
+        /// <summary>
+        /// This is the draw method that will be called in the GameManager
+        /// </summary>
+        /// <param name="player"> Passing in the player object</param>
         public static void Draw(Player player)
         {
+            // Calling all the methods above 
             DrawUIElements(player);
 
             PointUnlockCheck();
