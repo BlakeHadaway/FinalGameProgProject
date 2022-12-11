@@ -226,9 +226,20 @@ namespace FinalProject.Models
                 // if scroll index is at its starting position
                 if (Shared.scrollIndex == 0)
                 {
-                    // changing scrollindex to 3
-                    Shared.scrollIndex = 3;
-                    
+                    // check to see what weapon it should change to
+                    if (LMGUnlocked)
+                    {
+                        Shared.scrollIndex = 3;
+                    }
+                    else if (SniperUnlocked)
+                    {
+                        Shared.scrollIndex = 2;
+                    }
+                    else if (SMGUnlocked)
+                    {
+                        Shared.scrollIndex = 1;
+                    }
+
                     //calling swap weapons method
                     SwapWeapon();
                 }
@@ -256,13 +267,54 @@ namespace FinalProject.Models
                     // calling swap weapon method
                     SwapWeapon();
                 }
+                else if (Shared.scrollIndex == 2)
+                {
+                    if (LMGUnlocked)
+                    {
+                        // increasing index of scrollindex
+                        Shared.scrollIndex++;
+
+                        // calling swap weapon method
+                        SwapWeapon();
+                    }
+                    else
+                    {
+                        // setting index back to the start
+                        Shared.scrollIndex = 0;
+
+                        // calling swap weapon method
+                        SwapWeapon();
+                    }
+                }
+                else if (Shared.scrollIndex == 1)
+                {
+                    if (SniperUnlocked)
+                    {
+                        // increasing index of scrollindex
+                        Shared.scrollIndex++;
+
+                        // calling swap weapon method
+                        SwapWeapon();
+                    }
+                    else
+                    {
+                        // setting index back to the start
+                        Shared.scrollIndex = 0;
+
+                        // calling swap weapon method
+                        SwapWeapon();
+                    }
+                }
                 else
                 {
-                    // increasing index of scrollindex
-                    Shared.scrollIndex++;
+                    if (SMGUnlocked)
+                    {
+                        // increasing index of scrollindex
+                        Shared.scrollIndex++;
 
-                    // calling swap weapon method
-                    SwapWeapon();
+                        // calling swap weapon method
+                        SwapWeapon();
+                    }
                 }
             }
         }
