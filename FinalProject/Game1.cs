@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using SharpDX.Direct3D9;
 using System;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms.VisualStyles;
@@ -55,6 +56,11 @@ namespace FinalProject
             _graphics.PreferredBackBufferWidth = Shared.Boundaries.X;
             _graphics.PreferredBackBufferHeight = Shared.Boundaries.Y;
             _graphics.ApplyChanges();
+
+            using (StreamWriter writer = File.AppendText("HighScores.txt"))
+            {
+                writer.Close();
+            }
 
             // setting the shared content to the content, to have easy access to it
             Shared.Content = Content;
