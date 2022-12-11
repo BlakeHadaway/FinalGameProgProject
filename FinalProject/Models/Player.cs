@@ -72,7 +72,17 @@ namespace FinalProject.Models
         private void SwapWeapon()
         {
             // checking scrollIndex
-            if (Shared.scrollIndex == 1)
+            if (Shared.scrollIndex == 0)
+            {
+                // set the weapon to the pistol
+                Weapon = _pistol;
+
+                // setting this to make sure errors come from the snipers unique bullet
+                // penetration and reload
+                Shared.isSniperEquipped = false;
+            }
+            // checking scrollIndex
+            else if (Shared.scrollIndex == 1)
             {
                 // bool for if the weapon is unlocked
                 if (SMGUnlocked)

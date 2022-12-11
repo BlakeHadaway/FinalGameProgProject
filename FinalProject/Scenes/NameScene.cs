@@ -83,7 +83,7 @@ namespace FinalProject.Scenes
         /// <param name="gameTime">Gets a GameTime object passed in</param>
         public override void Draw(GameTime gameTime)
         {
-            // Modified this
+            // drawing using shared spritebatch
             Shared.SpriteBatch.Begin();
 
             // drawing the string for the user to enter there name

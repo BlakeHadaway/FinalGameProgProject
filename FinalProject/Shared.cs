@@ -12,8 +12,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FinalProject
 {
+    /// <summary>
+    /// This static shared class is used to have a bunch of different properies and fields that are to be used
+    /// in all of the different classes
+    /// </summary>
     public static class Shared
     {
+        // declaring properties and variables to be accessed and set throughout the program
         public static float TotalSeconds { get; set; }
         public static Game1 GameInst { get; set; }
         public static ContentManager Content { get; set; }
@@ -31,10 +36,13 @@ namespace FinalProject
         public static float zombieSpawnRate { get; set; } = 0.80f;
         public static int scrollIndex { get; set; } = 0;
 
-        public static Vector2 stage;
-
+        /// <summary>
+        /// update method to be called in Game1
+        /// </summary>
+        /// <param name="gameTime">passing in a gametime object</param>
         public static void Update(GameTime gameTime)
         {
+            // setting the Totalseconds to the elapsedgame time in seconds
             TotalSeconds = (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
     }
