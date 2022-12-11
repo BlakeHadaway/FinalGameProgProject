@@ -26,9 +26,9 @@ namespace FinalProject.Models
             origin = new(tex.Width / 2, tex.Height / 2);
         }
 
-        public virtual void Draw()
+        public virtual void Draw(Color color)
         {
-            Shared.SpriteBatch.Draw(texture, Position, null, Color.White, Rotation, origin, 1, SpriteEffects.None, 1);
+            Shared.SpriteBatch.Draw(texture, Position, null, color, Rotation, origin, 1, SpriteEffects.None, 1);
         }
     }
 }

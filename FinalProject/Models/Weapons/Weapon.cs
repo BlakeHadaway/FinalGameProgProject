@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Audio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,10 @@ namespace FinalProject.Models
 {
     public abstract class Weapon
     {
+        public SoundEffect GunShot { get; set; }
+        public SoundEffect ReloadSound { get; set; }
+        public SoundEffect ReloadSound2 { get; set; }
+
         protected float cooldown;
         protected float cooldownLeft;
         public int maxAmmo;
@@ -23,12 +28,17 @@ namespace FinalProject.Models
 
         public virtual void Reload()
         {
-            if (Reloading || (Ammo == maxAmmo)) 
+            if (Reloading || (Ammo == maxAmmo))
                 return;
 
             cooldownLeft = reloadTime;
             Reloading = true;
             Ammo = maxAmmo;
+            ReloadSound.Play();
+            if (Shared.isSniperEquipped)
+            {
+                ReloadSound2.Play();
+            }
         }
 
         protected abstract void CreateProjectiles(Player player);
@@ -48,6 +58,10 @@ namespace FinalProject.Models
                 Reload();
             }
 
+            GunShot.Play(volume: 0.2f, pitch: 0.0f, pan: 0.0f);
+
+
+
             CreateProjectiles(player);
         }
 
@@ -57,10 +71,11 @@ namespace FinalProject.Models
             {
                 cooldownLeft -= Shared.TotalSeconds;
             }
-            else if(Reloading)
+            else if (Reloading)
             {
                 Reloading = false;
             }
         }
     }
 }
+

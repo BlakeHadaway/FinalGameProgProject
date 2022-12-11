@@ -20,12 +20,10 @@ namespace FinalProject.Managers
         public static float _spawnTiming;
         private static Random _randomNumber;
         private static int _padding;
-        public BloodSplat _bloodSplat;
 
         public static void Initial()
         {
             _texture = Shared.Content.Load<Texture2D>("images/zombie");
-            _spawnCooldown = 0.70f;
             _spawnTiming = _spawnCooldown;
             _randomNumber = new Random();
             _padding = _texture.Width / 2;
@@ -65,7 +63,9 @@ namespace FinalProject.Managers
 
         public static void Update(Player player)
         {
+            _spawnCooldown = Shared.zombieSpawnRate;
             _spawnTiming -= Shared.TotalSeconds;
+
             if (_spawnTiming <= 0)
             {
                 _spawnTiming += _spawnCooldown;
@@ -84,7 +84,7 @@ namespace FinalProject.Managers
         {
             foreach (var zombie in HordeOfZombies)
             {
-                zombie.Draw();
+                zombie.Draw(Shared.White);
             }
         }
 

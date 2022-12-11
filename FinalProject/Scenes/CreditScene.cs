@@ -11,17 +11,13 @@ namespace FinalProject.Scenes
 {
     public class CreditScene : GameScene
     {
-        private Game1 g;
-        private Texture2D tex;
+        private Texture2D tex = Shared.Content.Load<Texture2D>("backgrounds/CreditScreen");
 
         public CreditScene(Game game) : base(game)
         {
-            this.g = (Game1)game;
-            Shared.SpriteBatch = g._spriteBatch;
+            Shared.GameInst = (Game1)game;
+            Shared.SpriteBatch = Shared.GameInst._spriteBatch;
 
-            //LOAD CONTENT FOR THE  HELP PAGE 
-            //******************************************
-            //tex = game.Content.Load<Texture2D>("");
         }
 
         public override void Draw(GameTime gameTime)

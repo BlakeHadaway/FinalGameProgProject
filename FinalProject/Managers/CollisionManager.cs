@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,12 +12,13 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SharpDX.Direct3D9;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace FinalProject.Managers
 {
     public class CollisionManager
     {
-        private readonly SoundEffect hitSound;
+        private static SoundEffect hitSound = Shared.Content.Load<SoundEffect>("sounds/character_hit");
 
         public static void Update(Player player, List<Zombie> zombieHorde)
         {
@@ -34,22 +36,14 @@ namespace FinalProject.Managers
                 {
                     if (playerRect.Intersects(zombieRect))
                     {
+                        Shared.playerHitPos = player.Position - new Vector2(25,25);
                         player.NumberOfLives--;
+                        hitSound.Play();
                         player.IFrames();
-                        GameOver(player);
+                        Shared.playerHit = true;
+                        ActionScene.GameOver(player);
                     }
                 }
-            }
-        }
-
-        public static void GameOver(Player player)
-        {
-            if (player.NumberOfLives == 0)
-            {
-                // define game over logic
-
-                // also need to be able to write to a local text file
-                FileIOManager.WriteScoreToFile();
             }
         }
     }

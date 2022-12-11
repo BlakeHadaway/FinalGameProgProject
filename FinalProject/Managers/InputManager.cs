@@ -21,6 +21,8 @@ namespace FinalProject.Managers
         public static bool MouseRightClicked { get; private set; }
         public static bool MouseLeftDown { get; private set; }
         public static bool SpacePressed { get; private set; }
+        public static bool ScrollWheelDown { get; private set; }
+        public static bool ScrollWheelUp { get; private set; }
 
         public static void Update()
         {
@@ -47,7 +49,8 @@ namespace FinalProject.Managers
             MouseRightClicked = mouseState.RightButton == ButtonState.Pressed
                                 && (_lastMouseState.RightButton == ButtonState.Released);
 
-            SpacePressed = _lastKeyboardState.IsKeyUp(Keys.Space) && keyboardState.IsKeyDown(Keys.Space);
+            ScrollWheelUp = mouseState.ScrollWheelValue > _lastMouseState.ScrollWheelValue;
+            ScrollWheelDown = mouseState.ScrollWheelValue < _lastMouseState.ScrollWheelValue;
 
             _lastKeyboardState = keyboardState;
             _lastMouseState = Mouse.GetState();

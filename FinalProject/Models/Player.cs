@@ -16,20 +16,26 @@ namespace FinalProject.Models
 {
     public class Player : ImageSprite
     {
-        public Weapon Weapon { get; set; } = new HandGun();
+        public Weapon Weapon { get; set; }
         private readonly Weapon _pistol = new HandGun();
         private readonly Weapon _smg = new MachineGun();
         private readonly Weapon _sniper = new SniperRifle();
+        private readonly Weapon _lmg = new LightMachineGun();
+
+        public static bool SMGUnlocked { get; set; } = false;
+        public static bool SniperUnlocked { get; set; } = false;
+        public static bool LMGUnlocked { get; set; } = false;
 
         private float _invincibilityCooldownLeft;
         public int NumberOfLives { get; set; }
         public bool Invincibility { get; set; }
         public float _invincibilityTime;
+        public bool _dead;
 
         public Player(Texture2D tex, Vector2 pos) : base(tex, pos)
         {
             _invincibilityCooldownLeft = 0f;
-            NumberOfLives = 10;
+            NumberOfLives = 1;
             Invincibility = false;
             _invincibilityTime = 3.5f;
             Weapon = _pistol;
@@ -37,23 +43,51 @@ namespace FinalProject.Models
 
         private void SwapWeapon()
         {
-            //Weapon = (Weapon == _pistol) ? _sniper : _smg;
-
-            if (Weapon == _pistol)
-            {
-                Weapon = _smg;
-            }
-            else if (Weapon == _smg)
-            {
-                Weapon = _sniper;
-                Shared.isSniperEquipped = true;
-            }
-            else
+            if (Shared.scrollIndex == 0)
             {
                 Shared.isSniperEquipped = false;
                 Weapon = _pistol;
             }
-
+            else if (Shared.scrollIndex == 1)
+            {
+                if (SMGUnlocked)
+                {
+                    Weapon = _smg;
+                    Shared.isSniperEquipped = false;
+                }
+                else
+                {
+                    Shared.scrollIndex = 0;
+                    Weapon = _pistol;
+                }
+            }
+            else if (Shared.scrollIndex == 2)
+            {
+                if (SniperUnlocked)
+                {
+                    Weapon = _sniper;
+                    Shared.isSniperEquipped = true;
+                }
+                else
+                {
+                    Shared.scrollIndex = 0;
+                    Shared.isSniperEquipped = false;
+                    Weapon = _pistol;
+                }
+            }
+            else if (Shared.scrollIndex == 3)
+            {
+                if (LMGUnlocked)
+                {
+                    Weapon = _lmg;
+                    Shared.isSniperEquipped = false;
+                }
+                else
+                {
+                    Shared.scrollIndex = 0;
+                    Weapon = _pistol;
+                }
+            }
         }
 
         public void IFrames()
@@ -101,10 +135,34 @@ namespace FinalProject.Models
             {
                 Weapon.Reload();
             }
-
-            if (InputManager.SpacePressed)
+            
+            if (InputManager.ScrollWheelUp)
             {
-                SwapWeapon();
+                if (Shared.scrollIndex == 0)
+                {
+                    Shared.scrollIndex = 3;
+                    SwapWeapon();
+                }
+                else
+                {
+                    Shared.scrollIndex--;
+                    SwapWeapon();
+                }
+
+            }
+
+            if (InputManager.ScrollWheelDown)
+            {
+                if (Shared.scrollIndex == 3)
+                {
+                    Shared.scrollIndex = 0;
+                    SwapWeapon();
+                }
+                else
+                {
+                    Shared.scrollIndex++;
+                    SwapWeapon();
+                }
             }
         }
 

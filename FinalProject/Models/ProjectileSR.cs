@@ -1,20 +1,19 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
-namespace FinalProject.Models
+namespace FinalProject.Models.Weapons
 {
-    public class Projectile : ImageSprite
+    public class ProjectileSR : ImageSprite
     {
         public Vector2 Direction { get; set; }
         public float Lifespan { get; private set; }
 
-        public Projectile(Texture2D tex, ProjectileData projData) : base(tex, projData.Position)
+        public ProjectileSR(Texture2D tex, ProjectileData projData) : base(tex, projData.Position)
         {
             Speed = projData.Speed;
             Rotation = projData.Rotation;

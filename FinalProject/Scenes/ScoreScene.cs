@@ -13,13 +13,12 @@ namespace FinalProject.Scenes
 {
     public class ScoreScene : GameScene
     {
-        private Game1 g;
         private Texture2D tex = Shared.Content.Load<Texture2D>("backgrounds/HighScorePage");
 
         public ScoreScene(Game game) : base(game)
         {
-            this.g = (Game1)game;
-            Shared.SpriteBatch = g._spriteBatch;
+            Shared.GameInst = (Game1)game;
+            Shared.SpriteBatch = Shared.GameInst._spriteBatch;
         }
 
         public override void Draw(GameTime gameTime)

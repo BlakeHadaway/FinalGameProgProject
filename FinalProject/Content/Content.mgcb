@@ -13,6 +13,18 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin backgrounds/CreditScreen.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:backgrounds/CreditScreen.png
+
 #begin backgrounds/GreenBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -130,6 +142,18 @@
 /processorParam:TextureFormat=Color
 /build:images/player.png
 
+#begin images/PlayerBlood.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:images/PlayerBlood.png
+
 #begin images/zombie.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -141,4 +165,58 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:images/zombie.png
+
+#begin sounds/character_hit.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/character_hit.wav
+
+#begin sounds/menu_music.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:sounds/menu_music.mp3
+
+#begin sounds/mg_shot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/mg_shot.wav
+
+#begin sounds/pistol_reload.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/pistol_reload.wav
+
+#begin sounds/pistol_shot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/pistol_shot.wav
+
+#begin sounds/sr_reload.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/sr_reload.wav
+
+#begin sounds/sr_reload2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/sr_reload2.wav
+
+#begin sounds/sr_shot.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/sr_shot.wav
+
+#begin sounds/zombie_death.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:sounds/zombie_death.wav
 

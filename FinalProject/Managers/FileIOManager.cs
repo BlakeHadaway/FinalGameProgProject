@@ -21,24 +21,26 @@ namespace FinalProject.Managers
             using (FileStream fileStream = new FileStream(fileName, FileMode.Append, FileAccess.Write))
             using (StreamWriter streamWriter = new StreamWriter(fileStream))
             {
-                streamWriter.WriteLine(Shared.TotalScore);
+                streamWriter.WriteLine($"{Shared.playerName}-" + Shared.Score);
             }
         }
 
         public static void ReadTopScoresFromFile()
         {
-            var TopScores = File.ReadLines("HighScores.txt")
-            .Select(scoreline => int.Parse(scoreline))
-            .OrderByDescending(score => score)
+            var scores = File.ReadLines("HighScores.txt")
+            .Select(line => {
+            string[] parts = line.Split('-');
+            return new { Name = parts[0], Score = int.Parse(parts[1]) };
+            }).OrderByDescending(highScore => highScore.Score)
             .Take(10);
 
             int counter = 0;
             int spacing = 130;
 
-            foreach (var TopScore in TopScores)
+            foreach (var TopScore in scores)
             { 
                 counter++;
-                Shared.SpriteBatch.DrawString(font , counter + " - " + TopScore, new Vector2(715, spacing), Color.White);
+                Shared.SpriteBatch.DrawString(font , counter + " - " + TopScore, new Vector2(500, spacing), Color.White);
                 spacing += 60;
             }
         }

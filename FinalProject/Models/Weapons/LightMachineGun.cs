@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Models.Weapons
 {
-    public class HandGun : Weapon
+    public class LightMachineGun : Weapon
     {
-        private SoundEffect pistolShot = Shared.Content.Load<SoundEffect>("sounds/pistol_shot");
-        private SoundEffect pistolReload = Shared.Content.Load<SoundEffect>("sounds/pistol_reload");
-        public HandGun()
+        private SoundEffect lmgShot = Shared.Content.Load<SoundEffect>("sounds/pistol_shot");
+        private SoundEffect lmgReload = Shared.Content.Load<SoundEffect>("sounds/pistol_reload");
+        public LightMachineGun()
         {
-            cooldown = 0.7f;
-            maxAmmo = 12;
+            cooldown = 0.08f;
+            maxAmmo = 75;
             Ammo = maxAmmo;
-            reloadTime = 1.2f;
-            GunShot = pistolShot;
-            ReloadSound = pistolReload;
+            reloadTime = 3.2f;
+            GunShot = lmgShot;
+            ReloadSound = lmgReload;
         }
 
         protected override void CreateProjectiles(Player player)
@@ -29,10 +29,12 @@ namespace FinalProject.Models.Weapons
                 Position = player.Position,
                 Rotation = player.Rotation,
                 Lifespan = 2f,
-                Speed = 400
+                Speed = 650
             };
 
             ProjectileManager.AddProjectile(projectileData);
         }
     }
+
+
 }

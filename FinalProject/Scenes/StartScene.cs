@@ -15,6 +15,7 @@ namespace FinalProject
         public MenuComponent Menu { get; set; }
         private SpriteBatch spriteBatch;
         string[] menuItems = { "Start Game",
+            "Enter Name",
             "Help",
             "HighScore",
             "Credits",
@@ -22,8 +23,8 @@ namespace FinalProject
 
         public StartScene(Game game) : base(game)
         {
-            Game1 g = (Game1)game;
-            this.spriteBatch = g._spriteBatch;
+            Shared.GameInst = (Game1)game;
+            this.spriteBatch = Shared.GameInst._spriteBatch;
 
             SpriteFont font = game.Content.Load<SpriteFont>("fonts/startFont");
 

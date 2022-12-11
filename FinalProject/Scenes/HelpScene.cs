@@ -11,17 +11,12 @@ namespace FinalProject
 {
     public class HelpScene : GameScene
     {
-        private Game1 g;
         private Texture2D tex = Shared.Content.Load<Texture2D>("backgrounds/HelpScreen");
 
         public HelpScene(Game game) : base(game)
         {
-            this.g = (Game1)game;
-            Shared.SpriteBatch = g._spriteBatch;
-
-            //LOAD CONTENT FOR THE  HELP PAGE 
-            //******************************************
-            //tex = game.Content.Load<Texture2D>("");
+            Shared.GameInst = (Game1)game;
+            Shared.SpriteBatch = Shared.GameInst._spriteBatch;
         }
 
         public override void Draw(GameTime gameTime)
