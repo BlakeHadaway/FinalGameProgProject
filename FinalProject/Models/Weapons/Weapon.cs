@@ -2,7 +2,7 @@
  * Weapon.cs
  * Outbreak game
  * Revision History
- *      
+ *      Blake power
  * 
  * 
  * 
