@@ -11,18 +11,32 @@ namespace FinalProject
 {
     public class MenuComponent : DrawableGameComponent
     {
+        // setting spritebatch and fonts and colors 
         private SpriteBatch spriteBatch;
         private SpriteFont regularFont, highlightFont;
         private Color regularColor = Color.Black;
         private Color highlightColor = Color.Red;
 
+        // list of menu items to display on the menu 
         private List<string> menuItems;
 
+        // selected index for what is selected on the menu
         public static int selectedIndex { get; set; }
+
+        // positon for things on the menu 
         public Vector2 position;
 
+        // to have what our old keyboardstate was 
         private KeyboardState oldState;
 
+        /// <summary>
+        /// Setting all things like color and fonts 
+        /// </summary>
+        /// <param name="game"></param>
+        /// <param name="spriteBatch"></param>
+        /// <param name="regularFont"></param>
+        /// <param name="highlightFont"></param>
+        /// <param name="menus"></param>
         public MenuComponent(Game game,SpriteBatch spriteBatch,SpriteFont regularFont, SpriteFont highlightFont, string[] menus) : base(game)
         {
             this.spriteBatch = spriteBatch;
@@ -32,6 +46,10 @@ namespace FinalProject
             position = new Vector2(30, 30);
         }
 
+        /// <summary>
+        /// when moving in the menu the selected index menu item will be highlighted 
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Draw(GameTime gameTime)
         {
             Vector2 tempPos = position;
@@ -58,6 +76,10 @@ namespace FinalProject
             base.Draw(gameTime);
         }
 
+        /// <summary>
+        /// Keeping track of the index of the menu item when cycling through the menu items 
+        /// </summary>
+        /// <param name="gameTime"></param>
         public override void Update(GameTime gameTime)
         {
             KeyboardState ks = Keyboard.GetState();

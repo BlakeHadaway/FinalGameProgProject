@@ -11,8 +11,13 @@ namespace FinalProject.Scenes
 {
     public class CreditScene : GameScene
     {
+        // background image for the credits scene 
         private Texture2D tex = Shared.Content.Load<Texture2D>("backgrounds/CreditScreen");
 
+        /// <summary>
+        /// setting gameinst and the sprite batch to be the gameinst spritebatch.
+        /// </summary>
+        /// <param name="game"></param>
         public CreditScene(Game game) : base(game)
         {
             Shared.GameInst = (Game1)game;

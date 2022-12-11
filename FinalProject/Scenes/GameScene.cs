@@ -11,26 +11,37 @@ namespace FinalProject
 {
     public abstract class GameScene : DrawableGameComponent
     {
+        // list of game components
         public List<GameComponent> Components { get; set; }
 
+        //show method
         public virtual void show()
         {
             this.Enabled = true;
             this.Visible = true;
         }
 
+        //hide method 
         public virtual void hide()
         {
             this.Enabled = false;
             this.Visible = false;
         }
 
+        /// <summary>
+        /// Start by hiding all things in the gamecomponent list and initialize the components
+        /// </summary>
+        /// <param name="game">passing in game</param>
         protected GameScene(Game game) : base(game)
         {
             Components = new List<GameComponent>();
             hide();
         }
 
+        /// <summary>
+        /// draw all the gamecompenents 
+        /// </summary>
+        /// <param name="gameTime">passing in gametime</param>
         public override void Draw(GameTime gameTime)
         {
             foreach (GameComponent item in Components)
@@ -48,6 +59,10 @@ namespace FinalProject
             base.Draw(gameTime);
         }
 
+        /// <summary>
+        /// When an item is enabled in the menu, update to show it 
+        /// </summary>
+        /// <param name="gameTime">passing in gametime</param>
         public override void Update(GameTime gameTime)
         {
             foreach (GameComponent item in Components)

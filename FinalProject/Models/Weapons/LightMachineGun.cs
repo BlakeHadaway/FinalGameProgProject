@@ -10,8 +10,13 @@ namespace FinalProject.Models.Weapons
 {
     public class LightMachineGun : Weapon
     {
+        // Sounds used by the LightMachineGun
         private SoundEffect lmgShot = Shared.Content.Load<SoundEffect>("sounds/pistol_shot");
         private SoundEffect lmgReload = Shared.Content.Load<SoundEffect>("sounds/pistol_reload");
+        /// <summary>
+        /// Setting the gun sounds and ammo etc. to be unique for our lmg using the inherited Weapon
+        /// class 
+        /// </summary>
         public LightMachineGun()
         {
             cooldown = 0.08f;
@@ -22,6 +27,12 @@ namespace FinalProject.Models.Weapons
             ReloadSound = lmgReload;
         }
 
+        /// <summary>
+        /// CreateProjectiles with new projectiledata changing speed to be different and 
+        /// position to be on the player so it comes from the player then adding the projectile to
+        /// a list in ProjectileManager
+        /// </summary>
+        /// <param name="player"></param>
         protected override void CreateProjectiles(Player player)
         {
             ProjectileData projectileData = new()

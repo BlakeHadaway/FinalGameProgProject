@@ -13,8 +13,10 @@ namespace FinalProject.Scenes
 {
     public class ScoreScene : GameScene
     {
+       
         private Texture2D tex = Shared.Content.Load<Texture2D>("backgrounds/HighScorePage");
 
+        
         public ScoreScene(Game game) : base(game)
         {
             Shared.GameInst = (Game1)game;

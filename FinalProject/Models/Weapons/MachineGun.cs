@@ -10,8 +10,14 @@ namespace FinalProject.Models.Weapons
 {
     public class MachineGun : Weapon
     {
+        // Sound effects used by our MachineGun
         private SoundEffect mgShot = Shared.Content.Load<SoundEffect>("sounds/pistol_shot");
         private SoundEffect mgReload = Shared.Content.Load<SoundEffect>("sounds/pistol_reload");
+
+        /// <summary>
+        /// Making the MachineGun have its different ammo amounts and gunshot sounds using the inherited 
+        /// Weapon class 
+        /// </summary>
         public MachineGun()
         {
             cooldown = 0.17f;
@@ -22,6 +28,12 @@ namespace FinalProject.Models.Weapons
             ReloadSound = mgReload;
         }
 
+        /// <summary>
+        /// Creating projectiles from the player using a new projectile data model
+        /// to make it shoot from the player and have its own speed and lifespan, and then 
+        /// adding it to a list in ProjectileManager
+        /// </summary>
+        /// <param name="player"></param>
         protected override void CreateProjectiles(Player player)
         {
             ProjectileData projectileData = new()

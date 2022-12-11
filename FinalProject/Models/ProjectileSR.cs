@@ -8,11 +8,24 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Models.Weapons
 {
+    /// <summary>
+    /// Whole sepperate class for the sniper so that its bullets can be put into a different
+    /// list to avoid other bullets piercing enemies when switching weapons. 
+    /// </summary>
     public class ProjectileSR : ImageSprite
     {
+        // get and set direction of the sniper bullet 
         public Vector2 Direction { get; set; }
+
+        // get and set Lifespan of the sniper bullet 
         public float Lifespan { get; private set; }
 
+        /// <summary>
+        /// projectilesr is being set up with its speed and rotation, direction and lifespan using the gets
+        /// and it gets all these things from projectiledata and is setting the vars from imagesprite.
+        /// </summary>
+        /// <param name="tex"></param>
+        /// <param name="projData"></param>
         public ProjectileSR(Texture2D tex, ProjectileData projData) : base(tex, projData.Position)
         {
             Speed = projData.Speed;
@@ -21,11 +34,17 @@ namespace FinalProject.Models.Weapons
             Lifespan = projData.Lifespan;
         }
 
+        /// <summary>
+        /// Removes bullets 
+        /// </summary>
         public void Remove()
         {
             Lifespan = 0;
         }
 
+        /// <summary>
+        /// update for updating the bullet so that it can move in its given direction 
+        /// </summary>
         public void Update()
         {
             Position += Direction * Speed * Shared.TotalSeconds;

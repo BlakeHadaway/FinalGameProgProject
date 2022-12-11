@@ -15,7 +15,9 @@ namespace FinalProject
 {
     public class ActionScene : GameScene
     {
+       
         private GamePlay gamePlay = new GamePlay();
+
         private Texture2D splatterTex = Shared.Content.Load<Texture2D>("images/BloodSplatter");
         private Texture2D bloodTex = Shared.Content.Load<Texture2D>("images/PlayerBlood");
         private Texture2D background = Shared.Content.Load<Texture2D>("backgrounds/GreenBackground");
@@ -59,7 +61,6 @@ namespace FinalProject
             gamePlay.Update();
             base.Update(gameTime);
         }
-
 
         public override void Draw(GameTime gameTime)
         {

@@ -11,9 +11,17 @@ namespace FinalProject.Models
 {
     public class Projectile : ImageSprite
     {
+        // Direction vector
         public Vector2 Direction { get; set; }
+
+        // Lifespan float for the time of life the bullet has 
         public float Lifespan { get; private set; }
 
+        /// <summary>
+        /// setting all things about the projectile using the projectiledata 
+        /// </summary>
+        /// <param name="tex">Texture</param>
+        /// <param name="projData">The projectile data</param>
         public Projectile(Texture2D tex, ProjectileData projData) : base(tex, projData.Position)
         {
             Speed = projData.Speed;
@@ -22,11 +30,17 @@ namespace FinalProject.Models
             Lifespan = projData.Lifespan;
         }
 
+        /// <summary>
+        /// Remove bullet
+        /// </summary>
         public void Remove()
         {
             Lifespan = 0;
         }
 
+        /// <summary>
+        /// Updating the bullet so it can go forward 
+        /// </summary>
         public void Update()
         {
             Position += Direction * Speed * Shared.TotalSeconds;

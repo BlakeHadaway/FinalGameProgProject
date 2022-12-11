@@ -11,7 +11,7 @@ namespace FinalProject
 {
     public class StartScene : GameScene
     {
-
+        // Menu components to be drawn on the starting page 
         public MenuComponent Menu { get; set; }
         private SpriteBatch spriteBatch;
         string[] menuItems = { "Start Game",
@@ -21,6 +21,7 @@ namespace FinalProject
             "Credits",
             "Quit" };
 
+        // draw all the components to the page 
         public StartScene(Game game) : base(game)
         {
             Shared.GameInst = (Game1)game;

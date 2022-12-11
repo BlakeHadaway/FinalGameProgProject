@@ -10,9 +10,16 @@ namespace FinalProject.Models.Weapons
 {
     public class SniperRifle : Weapon
     {
+        // Sound effects for the sniper 
         private SoundEffect sniperRifleShot = Shared.Content.Load<SoundEffect>("sounds/sr_shot");
         private SoundEffect sniperRifleReload = Shared.Content.Load<SoundEffect>("sounds/sr_reload");
         private SoundEffect sniperRifleReload2 = Shared.Content.Load<SoundEffect>("sounds/sr_reload2");
+
+       
+        /// <summary>
+        /// making our SniperRifle with all the things from the weapon class so that it can have 
+        /// unique characteristics and differ from other weapons 
+        /// </summary>
         public SniperRifle()
         {
             cooldown = 2.1f;
@@ -24,6 +31,13 @@ namespace FinalProject.Models.Weapons
             ReloadSound2 = sniperRifleReload2;
         }
 
+        /// <summary>
+        /// CreateProjectiles protected override void because it is not returning anything rather it is just adding
+        /// a projectile to projectilemanager so that it can be put into a list. projectiledata is a class that we are using to
+        /// create a new projectiledata for our guns bullets so that they start at the player and go a certain speed with a lifespan
+        /// so that they do not ifinitely fly away. 
+        /// </summary>
+        /// <param name="player"></param>
         protected override void CreateProjectiles(Player player)
         {
             ProjectileData projectileData = new()

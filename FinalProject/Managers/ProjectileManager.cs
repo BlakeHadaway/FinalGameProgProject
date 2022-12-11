@@ -17,18 +17,31 @@ namespace FinalProject.Managers
 {
     public static class ProjectileManager
     {
+        //texture of the bullet 
         private static Texture2D _texture;
+
+        // list of projectiles not shot out of a sniper 
         public static List<Projectile> Projectiles { get; } = new();
 
+        //list of projectiles shot out of a sniper 
         public static List<ProjectileSR> Projectiles2 { get; } = new();
 
+        // Sound effect for zombies death
         public static SoundEffect zombieDeathSound = Shared.Content.Load<SoundEffect>("sounds/zombie_death");
 
+        /// <summary>
+        /// Initializing the bullet image 
+        /// </summary>
         public static void Initial()
         {
             _texture = Shared.Content.Load<Texture2D>("images/bullet");
         }
 
+        /// <summary>
+        /// public static void for adding bullets, if the gun equipped is a sniper the bool will be true
+        /// and the projectiles2 will be added else the normal projectiles will be added.
+        /// </summary>
+        /// <param name="projData">Projectile data</param>
         public static void AddProjectile(ProjectileData projData)
         {
             if (Shared.isSniperEquipped)
@@ -41,6 +54,15 @@ namespace FinalProject.Managers
             }
         }
 
+        /// <summary>
+        /// For updating the list of zombies. foreach bullet in projectiles update them and foreach zombie in the list
+        /// of zombies, if their health is less than or equal to zero then continue and thne the if statement for if a bullet hits them
+        /// to remove the bullet and inflict the damage to the zombie adn then takes the zombie out of the list and adds to our score.
+        /// next if our score is hitting the checkpoints give the player the new weapons and start spawning more zombies to make the game 
+        /// harder. Do the exact same thing foreach bullet in projectiles2 then remove bullets when they are at the end of their 
+        /// lifespan.
+        /// </summary>
+        /// <param name="hordeOfZombies">list of zombies</param>
         public static void Update(List<Zombie> hordeOfZombies)
         {
 
@@ -61,7 +83,12 @@ namespace FinalProject.Managers
                         Shared.KillZombiePos = zombie.Position - new Vector2(25, 25);
                         Shared.zombHit = true;
                         Shared.Score++;
+
+                        // play zombie death sound 
                         zombieDeathSound.Play(volume: 0.2f, pitch: 0.0f, pan: 0.0f);
+
+                        // Score checkpoints for unlocking weapons and making the zombies spawn 
+                        // more frequently 
 
                         if (Shared.Score == 15)
                         {
@@ -128,6 +155,10 @@ namespace FinalProject.Managers
             Projectiles.RemoveAll((bullet) => bullet.Lifespan <= 0);
         }
 
+        /// <summary>
+        /// Draws the bullets into the game for both normal projectiles and sniper 
+        /// projectiles 
+        /// </summary>
         public static void Draw()
         {
             foreach (var bullet in Projectiles)

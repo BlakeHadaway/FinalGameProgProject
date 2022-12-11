@@ -24,6 +24,7 @@ namespace FinalProject.Scenes
             _font = Shared.Content.Load<SpriteFont>("fonts/startFont");
         }
 
+      
         public void Update()
         {
             KeyboardState keyboardState = Keyboard.GetState();
@@ -51,7 +52,7 @@ namespace FinalProject.Scenes
 
         public override void Draw(GameTime gameTime)
         {
-            // Modified this
+          
             Shared.SpriteBatch.Begin();
             Shared.SpriteBatch.DrawString(_font, $"Your Name: {Shared.playerName}", Vector2.Zero, Shared.White);
             Shared.SpriteBatch.End();

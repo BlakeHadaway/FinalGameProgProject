@@ -11,6 +11,7 @@ namespace FinalProject
 {
     public class HelpScene : GameScene
     {
+        // background image for helpscreen
         private Texture2D tex = Shared.Content.Load<Texture2D>("backgrounds/HelpScreen");
 
         public HelpScene(Game game) : base(game)
