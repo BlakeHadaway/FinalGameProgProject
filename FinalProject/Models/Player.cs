@@ -35,7 +35,7 @@ namespace FinalProject.Models
         public Player(Texture2D tex, Vector2 pos) : base(tex, pos)
         {
             _invincibilityCooldownLeft = 0f;
-            NumberOfLives = 1;
+            NumberOfLives = 5;
             Invincibility = false;
             _invincibilityTime = 3.5f;
             Weapon = _pistol;

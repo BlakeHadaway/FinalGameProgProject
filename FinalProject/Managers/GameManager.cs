@@ -46,7 +46,7 @@ namespace FinalProject.Managers
             Player.SMGUnlocked = false;
             Player.SniperUnlocked = false;
             Player.LMGUnlocked = false;
-            _player.NumberOfLives = 1;
+            _player.NumberOfLives = 5;
             _player._dead = false;
 
         }

@@ -26,10 +26,7 @@ namespace FinalProject.Managers
 
         public virtual void Update()
         {
-            if (true)
-            {
-                gameManager.Update();
-            }
+            gameManager.Update();
         }
 
         public virtual void ResetWorld(object data)
@@ -39,10 +36,7 @@ namespace FinalProject.Managers
 
         public virtual void Draw()
         {
-            if (true)
-            {
-                gameManager.Draw();
-            }
+            gameManager.Draw();
         }
     }
 }

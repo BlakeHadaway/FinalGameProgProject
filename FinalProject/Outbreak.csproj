@@ -15,7 +15,6 @@
     <Content Include="Outbreak_Game_Icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MiNET" Version="1.0.2304" />
     <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.1.303" />
     <PackageReference Include="MonoGame.Content.Builder.Task" Version="3.8.1.303" />
   </ItemGroup>

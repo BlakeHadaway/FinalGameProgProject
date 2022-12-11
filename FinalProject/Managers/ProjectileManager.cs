@@ -39,7 +39,6 @@ namespace FinalProject.Managers
             {
                 Projectiles.Add(new(_texture, projData));
             }
-
         }
 
         public static void Update(List<Zombie> hordeOfZombies)
