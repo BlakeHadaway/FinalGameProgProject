@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Projectile.cs
+ * Outbreak game
+ * Revision History
+ *      Blake Power, 2022.12.1: Created
+ *      Blake Power, 2022.12.1: Added code
+ *      Blake Power, 2022.12.11: Comments added
+ */
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
