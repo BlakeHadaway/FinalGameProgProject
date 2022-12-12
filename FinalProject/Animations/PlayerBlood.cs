@@ -1,4 +1,13 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*
+ * InputManager.cs
+ * Outbreak game
+ * Revision History
+ *      Blake Power, 2022.12.4: Created
+ *      Blake Power, 2022.12.4: Added code
+ *      Blake Power, 2022.12.11: Comments added
+ */
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Linq;

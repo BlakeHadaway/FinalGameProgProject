@@ -1,4 +1,13 @@
-﻿using FinalProject.Managers;
+﻿/*
+ * HandGun.cs
+ * Outbreak game
+ * Revision History
+ *      Blake Power, 2022.12.3: Created
+ *      Blake Power, 2022.12.3: Added code
+ *      Blake Power, 2022.12.11: Comments added
+ */
+
+using FinalProject.Managers;
 using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;

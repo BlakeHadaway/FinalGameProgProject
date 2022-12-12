@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ * Outbreak
+ * ImageSprite.cs
+ * 
+ * Revision History:
+ *      Blake Hadaway - November 30: Created
+ *      Blake Hadaway - November 30: Programed
+ *      Blake Hadaway - December 11: Added Comments
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

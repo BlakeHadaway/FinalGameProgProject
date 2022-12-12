@@ -2,12 +2,11 @@
  * Weapon.cs
  * Outbreak game
  * Revision History
- *      Blake power
- * 
- * 
- * 
- * 
+ *      Blake Power, 2022.12.2: Created
+ *      Blake Power, 2022.12.2: Added code
+ *      Blake Power, 2022.12.11: Comments added
  */
+
 using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;

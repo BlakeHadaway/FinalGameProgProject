@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ * Outbreak
+ * FileIOManager.cs
+ * 
+ * Revision History:
+ *      Blake Hadaway - November 30: Created
+ *      Blake Hadaway - November 30: Added Collision and functions
+ * 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;

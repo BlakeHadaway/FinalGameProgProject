@@ -1,4 +1,14 @@
-﻿using FinalProject.Managers;
+﻿/*
+ * Outbreak
+ * Game1.cs
+ * 
+ * Revision History:
+ *      Blake Hadaway & Blake Power - November 30: Created
+ *      Blake Hadaway & Blake Power - November 30: Programed
+ *      Blake Hadaway & Blake Power - December 11: Added Comments
+ */
+
+using FinalProject.Managers;
 using FinalProject.Models;
 using FinalProject.Scenes;
 using Microsoft.Xna.Framework;

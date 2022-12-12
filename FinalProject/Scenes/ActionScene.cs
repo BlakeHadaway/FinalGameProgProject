@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ * Outbreak
+ * ActionScene.cs
+ * 
+ * Revision History:
+ *      Blake Hadaway - December 2: Created
+ *      Blake Hadaway - December 2: Programed
+ *      Blake Hadaway - December 11: Added Comments
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;

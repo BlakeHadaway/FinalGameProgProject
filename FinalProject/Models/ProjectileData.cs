@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*
+ * ProjectileData.cs
+ * Outbreak game
+ * Revision History
+ *      Blake Power, 2022.12.1: Created
+ *      Blake Power, 2022.12.1: Added code
+ *      Blake Power, 2022.12.11: Comments added
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +18,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace FinalProject.Models
 {
-    public sealed class ProjectileData
+    public class ProjectileData
     {
         // position of the bullet 
         public Vector2 Position { get; set; }

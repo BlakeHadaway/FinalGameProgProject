@@ -1,4 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿/*
+ * Outbreak
+ * ScoreScene.cs
+ * 
+ * Revision History:
+ *      Blake Hadaway - December 3: Created
+ *      Blake Hadaway - December 3: Programed
+ *      Blake Hadaway - December 11: Added Comments
+ */
+
+using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

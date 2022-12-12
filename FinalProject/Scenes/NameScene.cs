@@ -1,4 +1,14 @@
-﻿using System;
+﻿/*
+ * Outbreak
+ * NameScene.cs
+ * 
+ * Revision History:
+ *      Blake Hadaway - December 10: Created
+ *      Blake Hadaway - December 10: Programed
+ *      Blake Hadaway - December 11: Added Comments
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;

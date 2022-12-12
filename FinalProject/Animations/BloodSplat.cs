@@ -1,4 +1,14 @@
-﻿using FinalProject.Models;
+﻿/*
+ * Outbreak
+ * BloodSplat.cs
+ * 
+ * Revision History:
+ *      Blake Hadaway - December 4: Created
+ *      Blake Hadaway - December 4: Programed
+ *      Blake Hadaway - December 11: Added Comments
+ */
+
+using FinalProject.Models;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SharpDX.Direct3D9;
