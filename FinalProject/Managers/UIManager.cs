@@ -62,7 +62,7 @@ namespace FinalProject.Managers
             }
             else if (Shared.Score >= 280)
             {
-                tempString = $"Last Weapon Aquired : Survive As Long As Possible!";
+                tempString = $"Last Weapon Acquired : Survive As Long As Possible!";
                 stringDimentions = font.MeasureString(tempString);
                 Shared.SpriteBatch.DrawString(font, tempString, new Vector2(Shared.Boundaries.X / 2 - stringDimentions.X / 2, Shared.Boundaries.Y - 900), Color.Black);
             }

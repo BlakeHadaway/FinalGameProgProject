@@ -55,7 +55,7 @@ namespace FinalProject.Managers
         /// 
         /// </summary>
         /// <param name="data">passing object</param>
-        public virtual void ResetWorld(object data)
+        public void ResetWorld(object data)
         {
             // setting new instance of GameManager and passing in delegate
             gameManager = new GameManager(ResetWorld);
